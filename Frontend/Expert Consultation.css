@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f8f9fa; /* Light background color for contrast */
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* Styling the submit button */
+.btn-submit {
+    background-color: #28a745; /* Green color */
+    color: #ffffff; /* White text */
+    border:#28a745; /* Remove default border */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Increase font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    display: inline-block; /* Ensures button appearance */
+    text-align: center; /* Centers the text inside the button */
+}
+
+/* Change color on hover */
+.btn-submit:hover {
+    background-color: #1b4332; /* Dark green on hover */
+}
+
+/* Additional styling for button to ensure visibility */
+.btn-submit:active,
+.btn-submit:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Add a focus shadow for accessibility */
+}
+
+
+/* Headings */
+h2 {
+    color: #2d6a4f; /* Green color for heading */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555; /* Slightly darker gray for paragraph text */
+}
+
+/* Form Labels */
+label {
+    font-weight: bold;
+    color: #2d6a4f; /* Green color for labels */
+}
+
+/* Form Control */
+.form-control {
+    border: 1px solid #28a745; /* Green border for inputs */
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.form-control:focus {
+    border-color: #2d6a4f;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Green shadow on focus */
+}
+
+/* Textarea */
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Submit Button */
+.btn-green {
+    background-color: #2d6a4f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-green:hover {
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 767.98px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    .btn-green {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Footer Styles (Reuse from your existing CSS) */
+footer {
+    background-color: #1b4332; /* Dark green */
+    color: #fff;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #28a745;
+}

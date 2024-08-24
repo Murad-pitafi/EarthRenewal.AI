@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #c6eddf;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .feature-selection {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .selected-features {
+            margin-top: 20px;
+        }
+        .feature-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .feature-input input {
+            width: 100px; /* Adjusted width */
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .button-container {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Adds space between buttons */
+        }
+        .button-container button {
+            padding: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .button-container button.delete-btn {
+            background-color: #f44336;
+        }
+        .button-container button.delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        .button-container button:disabled {
+            background-color: #ccc;
+        }
+        .predict-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Soil Monitoring</h2>
+    <div class="feature-selection">
+        <label for="features">Select Features:</label>
+        <select id="features">
+            <option value="" disabled selected>Select a feature</option>
+            <!-- Options will be dynamically added here -->
+        </select>
+    </div>
+
+    <div id="selected-features" class="selected-features"></div>
+
+    <button id="predict-btn" class="predict-btn">Predict</button>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+    const featureOptions = {
+        "Boron": "Boron",
+        "Phosphorus": "Phosphorus",
+        "Zinc": "Zinc",
+        "Potassium": "Potassium",
+        "Sulfur": "Sulfur",
+        "Nitrogen": "Nitrogen",
+        "Temperature": "Temperature"
+    };
+
+    function updateDropdown() {
+        const dropdown = document.getElementById('features');
+        dropdown.innerHTML = '<option value="" disabled selected>Select a feature</option>'; // Reset dropdown
+
+        Object.keys(featureOptions).forEach(feature => {
+            if (!document.getElementById(feature)) {
+                const option = document.createElement('option');
+                option.value = feature;
+                option.textContent = feature;
+                dropdown.appendChild(option);
+            }
+        });
+    }
+
+    document.getElementById('features').addEventListener('change', function() {
+        const selectedFeature = this.value;
+        const selectedFeaturesDiv = document.getElementById('selected-features');
+
+        if (selectedFeature && !document.getElementById(selectedFeature)) {
+            const featureDiv = document.createElement('div');
+            featureDiv.classList.add('feature-input');
+            featureDiv.id = selectedFeature;
+
+            featureDiv.innerHTML = `
+                <label>${selectedFeature}:</label>
+                <input type="number" step="0.01" value="0" id="input-${selectedFeature}">
+                <div class="button-container">
+                    <button class="delete-btn" onclick="removeFeature('${selectedFeature}')">x</button>
+                </div>
+            `;
+
+            selectedFeaturesDiv.appendChild(featureDiv);
+            updateDropdown(); // Update dropdown to remove selected feature
+
+            // Hide the placeholder option if a feature is selected
+            if (document.querySelector('#features option[value=""]')) {
+                document.querySelector('#features option[value=""]').style.display = 'none';
+            }
+        }
+    });
+
+    function changeValue(feature, delta) {
+        const inputField = document.getElementById(`input-${feature}`);
+        const currentValue = parseFloat(inputField.value);
+        inputField.value = (currentValue + delta).toFixed(1);
+    }
+
+    function removeFeature(feature) {
+        const featureDiv = document.getElementById(feature);
+        if (featureDiv) {
+            featureDiv.remove();
+            updateDropdown(); // Update dropdown to include removed feature
+
+            // Show the placeholder option if no features are selected
+            if (!document.querySelector('#selected-features .feature-input')) {
+                document.querySelector('#features option[value=""]').style.display = 'block';
+            }
+        }
+    }
+
+    document.getElementById('predict-btn').addEventListener('click', function() {
+        const selectedFeatures = document.querySelectorAll('.feature-input input');
+        let isSuitable = true;
+
+        selectedFeatures.forEach(input => {
+            const value = parseFloat(input.value);
+            if (value < 0) isSuitable = false; // Example logic, adjust according to actual requirements
+        });
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = isSuitable ? "Your crop is suitable for this soil!" : "Your crop is not suitable for this soil.";
+    });
+
+    updateDropdown(); // Initial update to ensure dropdown is correct
+</script>
+
+</body>
+</html>
