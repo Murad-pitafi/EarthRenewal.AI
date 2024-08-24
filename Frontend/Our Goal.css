@@ -1,0 +1,255 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #2d6a4f; /* Deep green */
+    color: #fff;
+    padding: 4rem 4rem; /* Add padding for better spacing */
+    text-align: center; /* Center text */
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    background-color: #d4edda; /* Adjust as needed */
+}
+
+.container {
+    padding-top: 0px; /* Adjust based on header height to avoid content overlap */
+}
+
+/* Navigation */
+.navbar-light .navbar-nav .nav-link {
+    color: #333; /* Dark text */
+    transition: color 10s ease, transform 10s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #2d6a4f; /* Green on hover */
+    transform: scale(1.05); /* Slightly enlarge the text */
+}
+
+/* Toggler Animation */
+.navbar-toggler-icon {
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler.collapsed .navbar-toggler-icon {
+    transform: rotate(0deg);
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+    transform: rotate(90deg);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Header Scroll Effect */
+.header-scrolled {
+    background-color: #c3e6cb; /* Slightly darker green */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow on scroll */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #a4e5a4; /* Strong green for headings */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+/* Cards */
+.card {
+    border: 1px solid #2d6a4f; /* Green border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.card-title {
+    color: #2d6a4f; /* Green for card titles */
+    transition: color 0.3s ease;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Buttons */
+.btn-light {
+    background-color: #fff;
+    color: #2d6a4f;
+    border: 1px solid #2d6a4f;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-light:hover {
+    background-color: #2d6a4f;
+    color: #fff;
+}
+
+/* Footer */
+.bg-dark-green {
+    background-color: #1b4332; /* Dark green */
+    color: #fff; /* White text for contrast */
+    padding: 1rem; /* Add padding */
+    text-align: center; /* Center text */
+}
+
+/* Text Color and Borders */
+.text-green {
+    color: #28a745; /* Adjust the color as needed */
+}
+
+.border-green {
+    border-color: #28a745; /* Adjust the color as needed */
+}
+
+.card {
+    border: 1px solid #28a745; /* Adjust the color as needed */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Consultation Section */
+#consultation {
+    background-color: #f8f9fa; /* Light background */
+    padding: 60px 0;
+}
+
+#consultation h2 {
+    color: #2d6a4f; /* Green for heading */
+    margin-bottom: 40px;
+}
+
+#consultation .card {
+    border: 1px solid #28a745;
+}
+
+#consultation .card-title {
+    color: #2d6a4f; /* Green color for titles */
+}
+
+#consultation .btn-green {
+    background-color: #28a745; 
+    color: #fff;
+    border: none;
+}
+
+#consultation .btn-green:hover {
+    background-color: #1b4332; /* Darker green on hover */
+    color: #fff;
+}
+
+/* Ensure proper spacing between cards */
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* About Section */
+#about {
+    background-color: #2d6a4f; /* Green background color */
+    padding: 20px; /* Optional: Adjust padding as needed */
+    color: #ffffff; /* White text color for contrast */
+}
+
+/* Links */
+a {
+    color: #2d6a4f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1b4332; /* Darker green on hover */
+}
+
+/* Responsive Layout */
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+
+    .navbar-brand img {
+        height: 40px; /* Adjust logo size on smaller screens */
+    }
+}
+
+/* Dropdown Menu Animations */
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+
+    .navbar-brand img {
+        height: 40px; /* Adjust logo size on smaller screens */
+    }
+}
+@media (max-width: 767.98px) {
+    h2 {
+        font-size: 1.5rem; /* Smaller font size on smaller screens */
+    }
+
+    .card-title {
+        font-size: 1.125rem; /* Adjust card title font size */
+    }
+
+    .card-text {
+        font-size: 0.875rem; /* Adjust card text font size */
+    }
+}
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+        display: block;
+    }
+
+    .navbar-toggler {
+        margin: 0.5rem;
+    }
+}
+@media (max-width: 767.98px) {
+    .card {
+        margin-bottom: 1rem; /* Ensure space between stacked cards */
+    }
+}
+@media (max-width: 767.98px) {
+    .bg-dark-green {
+        padding: 1rem;
+        font-size: 0.875rem; /* Adjust footer text size */
+    }
+}

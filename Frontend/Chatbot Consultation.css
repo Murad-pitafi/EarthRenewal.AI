@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #1b4332; /* Dark Green */
+    padding: 15px;
+}
+
+/* Chatbot Container */
+.chatbot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    padding: 20px;
+}
+
+.chat-window {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; /* Ensure the chat window takes up the entire height of the container */
+}
+
+.chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 2px solid #e0e0e0;
+    max-height: calc(80vh - 140px); /* Adjust based on header/footer height */
+}
+
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.user-message {
+    text-align: right;
+    color: #333;
+    background-color: #d4edda;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.bot-message {
+    text-align: left;
+    color: #ffffff;
+    background-color: #2d6a4f;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.typing-indicator {
+    font-style: italic;
+    color: #aaa;
+    text-align: left;
+    margin-bottom: 10px; /* Ensures space before bot's response */
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #fafafa;
+    border-top: 2px solid #e0e0e0;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #28a745; /* Green border */
+    border-radius: 25px;
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-input button:hover {
+    background-color: #39795e; /* Dark Green on hover */
+}
+
+/* Placeholder animation */
+.chat-input input::placeholder {
+    color: #ccc;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+.chat-input input:focus::placeholder {
+    color: transparent;
+}
+
+/* Scrollbar styling */
+.chat-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+    background-color: #28a745; /* Green scrollbar */
+    border-radius: 3px;
+}
+
+.chat-body::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1b4332; /* Dark green */
+    color: #fff;
+    padding: 20px;
+    margin-top: 40px;
+    height: 13vh;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #28a745;
+}

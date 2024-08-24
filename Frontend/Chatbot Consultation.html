@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="Chatbot Consultation.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Header with Logo -->
+    <header class="bg-dark-green text-white text-center py-3">
+        <img src="logo.png" alt="Logo" height="100" width="100" class="mb-2">
+        <h1>Chat with our AI</h1>
+    </header>
+
+    <!-- Chatbot Container -->
+    <section class="chatbot-container">
+        <div class="chat-window">
+            <div class="chat-body" id="chat-body">
+                <!-- Chat messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" class="form-control" placeholder="Start typing..."
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start typing...'" autocomplete="off">
+                <button id="send-btn" class="btn btn-green">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-green text-white text-center py-4">
+        <p>&copy; 2024 EarthRenewal.AI. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/company/earthrenewal-ai/" class="text-white d-flex align-items-center justify-content-center">
+                <img src="linkedin.png" alt="LinkedIn" class="social-icon"
+                    style="width: 24px; height: 24px; margin-right: 8px;">
+                LinkedIn
+            </a>
+        </div>
+    </footer>
+
+    <!-- Include external JavaScript -->
+    <script src="Chatbot Consultation.js"></script>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
