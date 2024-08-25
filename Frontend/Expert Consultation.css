@@ -11,6 +11,24 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+.back-button {
+    position: center;
+    top: 15px;
+    left: 15px;
+}
+
+.back-button button {
+    background-color: #1b4332;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-button img.back-icon {
+    width: 24px;
+    height: 24px;
+}
+
 /* Styling the submit button */
 .btn-submit {
     background-color: #28a745; /* Green color */

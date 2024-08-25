@@ -13,9 +13,16 @@
 <body>
     <!-- Header with Logo -->
     <header class="bg-dark-green text-white text-center py-3">
+        <!-- Back Button -->
+        <div class="back-button">
+            <button onclick="goBack()">
+                <img src="back button.png" alt="Back" class="back-icon"> <!-- Replace with your back arrow icon -->
+            </button>
+        </div>
         <img src="logo.png" alt="Logo" height="100" width="100" class="mb-2">
         <h1>Chat with our AI</h1>
     </header>
+    
 
     <!-- Chatbot Container -->
     <section class="chatbot-container">
@@ -26,8 +33,12 @@
             <div class="chat-input">
                 <input type="text" id="user-input" class="form-control" placeholder="Start typing..."
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Start typing...'" autocomplete="off">
+                <button id="mic-btn" class="btn btn-transparent">
+                    <img src="mic-icon.png" alt="Mic" class="mic-icon">
+                </button>
                 <button id="send-btn" class="btn btn-green">Send</button>
-            </div>
+            </div>                      
+            
         </div>
     </section>
 

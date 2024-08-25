@@ -10,9 +10,14 @@
 </head>
 <body>
     <!-- Header (You can reuse your existing header) -->
-    <header class="bg-light py-3 sticky-top" style="background-color: #d4edda;">
-        <!-- Your existing header code -->
+    <header class="sticky-top" style="background-color: #1b4332; height: 50px; padding: 15px;">
+        <div class="back-button">
+            <button onclick="goBack()">
+                <img src="back button.png" alt="Back" class="back-icon">
+            </button>
+        </div>
     </header>
+    
 
     <!-- Consultation Form Section -->
     <section class="py-5">
@@ -88,5 +93,11 @@
         document.getElementById('thank-you-message').style.display = 'block';
     });
     </script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
 </body>
 </html>

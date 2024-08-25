@@ -8,6 +8,10 @@ document.getElementById("user-input").addEventListener("keypress", function(even
         sendMessage();
     }
 });
+document.getElementById("mic-btn").addEventListener("click", function() {
+    // Simulate listening to voice input
+    alert("Listening... (Simulated)"); // Replace this with actual voice recognition logic if needed
+});
 
 function sendMessage() {
     const userInput = document.getElementById("user-input");
@@ -48,4 +52,7 @@ function sendMessage() {
             chatBody.scrollTop = chatBody.scrollHeight;
         }, 3000); // Delay of 3000 milliseconds (3 seconds)
     }
+}
+function goBack() {
+    window.history.back();
 }

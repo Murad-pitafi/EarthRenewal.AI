@@ -10,6 +10,23 @@ header {
     background-color: #1b4332; /* Dark Green */
     padding: 15px;
 }
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.back-button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-button img.back-icon {
+    width: 24px;
+    height: 24px;
+}
 
 /* Chatbot Container */
 .chatbot-container {
@@ -25,11 +42,11 @@ header {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 370px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    height: 100%; /* Ensure the chat window takes up the entire height of the container */
+    height: 110%; /* Ensure the chat window takes up the entire height of the container */
 }
 
 .chat-body {
@@ -73,31 +90,57 @@ header {
 
 .chat-input {
     display: flex;
+    align-items: center;
     padding: 10px;
     background-color: #fafafa;
     border-top: 2px solid #e0e0e0;
+    border-radius: 0px;
 }
 
 .chat-input input {
     flex: 1;
     padding: 10px;
-    border: 2px solid #28a745; /* Green border */
-    border-radius: 25px;
+    border: none;
+    outline: none;
+    border-radius: 25px 25px 25px 25px;
 }
 
-.chat-input button {
-    margin-left: 10px;
+/* Send button */
+.chat-input button#send-btn {
     padding: 10px 20px;
     background-color: #28a745; /* Green button */
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 25px 25px 25px 25px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.chat-input button:hover {
+.chat-input button#send-btn:hover {
     background-color: #39795e; /* Dark Green on hover */
+}
+.chat-input button#mic-btn:hover {
+    background-color: #39795e; /* Dark Green on hover */
+}
+/* Microphone button styling */
+.btn-transparent {
+    background-color: transparent; /* Ensure the mic button container is fully transparent */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remove padding for circular shape */
+    margin-right: 10px; /* Space between mic button and send button */
+    margin-left: 5px; /* Push mic button to the right */
+    width: 40px; /* Set a fixed width for the circle */
+    height: 40px; /* Set a fixed height for the circle */
+    border-radius: 50%; /* Make the container circular */
+}
+.btn-transparent img.mic-icon {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
 }
 
 /* Placeholder animation */
