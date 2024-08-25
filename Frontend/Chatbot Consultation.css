@@ -10,6 +10,23 @@ header {
     background-color: #1b4332; /* Dark Green */
     padding: 15px;
 }
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.back-button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-button img.back-icon {
+    width: 24px;
+    height: 24px;
+}
 
 /* Chatbot Container */
 .chatbot-container {

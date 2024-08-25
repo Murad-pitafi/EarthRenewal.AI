@@ -53,3 +53,6 @@ function sendMessage() {
         }, 3000); // Delay of 3000 milliseconds (3 seconds)
     }
 }
+function goBack() {
+    window.history.back();
+}

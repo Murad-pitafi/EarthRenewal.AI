@@ -7,20 +7,54 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #c6eddf;
+            background-color: #1b4332;
             margin: 0;
-            padding: 20px;
+            /*padding: 10px;*/
+        }
+        header {
+            background-color: #1b4332; /* Dark green background */
+            padding: 5px; /* Reduced padding for smaller header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position:sticky;
+            top: 0;
+            width: 95%;
+            z-index: 1000;
+        }
+        .back-button {
+            display: flex;
+            align-items: center;
+        }
+        .back-button button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        .back-button img {
+            width: 25px; /* Adjust size if needed */
+            height: 25px;
+        }
+        .logo {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .logo img {
+            width: 100px; /* Keep logo size unchanged */
+            height: auto;
         }
         .container {
             max-width: 600px;
             margin: auto;
             background: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
         }
         h2 {
-            text-align: center;
+            text-align:center;
             color: #4CAF50;
         }
         .feature-selection {
@@ -59,7 +93,7 @@
             cursor: pointer;
         }
         .button-container button.delete-btn {
-            background-color: #f44336;
+            background-color: #000000;
         }
         .button-container button.delete-btn:hover {
             background-color: #d32f2f;
@@ -86,6 +120,16 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="back-button">
+            <button onclick="goBack()">
+                <img src="back button.png" alt="Back">
+            </button>
+        </div>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+    </header>
 
 <div class="container">
     <h2>Soil Monitoring</h2>
@@ -104,7 +148,11 @@
     <div id="result" class="result"></div>
 </div>
 
+
 <script>
+    function goBack() {
+        window.history.back();
+     }
     const featureOptions = {
         "Boron": "Boron",
         "Phosphorus": "Phosphorus",
