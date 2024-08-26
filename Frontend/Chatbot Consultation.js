@@ -4,30 +4,28 @@ document.getElementById("send-btn").addEventListener("click", function() {
 
 document.getElementById("user-input").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-        event.preventDefault(); // Prevents form submission if you're using a form
+        event.preventDefault();
         sendMessage();
     }
 });
+
 document.getElementById("mic-btn").addEventListener("click", function() {
-    // Simulate listening to voice input
-    alert("Listening... (Simulated)"); // Replace this with actual voice recognition logic if needed
+    startVoiceRecognition();
 });
 
-function sendMessage() {
+async function sendMessage(query) {
     const userInput = document.getElementById("user-input");
     const chatBody = document.getElementById("chat-body");
+    const userText = query || userInput.value.trim();
 
-    if (userInput.value.trim() !== "") {
+    if (userText !== "") {
         // Create and append user's message
         const userMessage = document.createElement("div");
         userMessage.classList.add("chat-message", "user-message");
-        userMessage.textContent = userInput.value;
+        userMessage.textContent = userText;
         chatBody.appendChild(userMessage);
 
-        // Scroll to the bottom of the chat body
         chatBody.scrollTop = chatBody.scrollHeight;
-
-        // Clear the input
         userInput.value = "";
 
         // Create and append typing indicator
@@ -36,23 +34,63 @@ function sendMessage() {
         typingIndicator.textContent = "Bot is typing...";
         chatBody.appendChild(typingIndicator);
 
-        // Scroll to the bottom of the chat body again
         chatBody.scrollTop = chatBody.scrollHeight;
 
-        // Remove typing indicator and show bot response after a delay
-        setTimeout(() => {
-            chatBody.removeChild(typingIndicator); // Remove typing indicator
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: userText }),
+            });
+
+            const data = await response.json();
+            chatBody.removeChild(typingIndicator);
 
             const botMessage = document.createElement("div");
             botMessage.classList.add("chat-message", "bot-message");
-            botMessage.textContent = "Smart irrigation refers to the use of advanced technologies, such as sensors, AI, and automated systems, to optimize the use of water in agriculture. Unlike traditional irrigation systems that operate on fixed schedules, smart irrigation systems adapt to real-time conditions like soil moisture levels, weather forecasts, and plant water needs to deliver water precisely where and when it’s needed. This not only conserves water but also improves crop yield and health by ensuring that plants receive the right amount of water at the right time.";
+            botMessage.textContent = data.answer || "Sorry, I couldn't process your request.";
             chatBody.appendChild(botMessage);
 
-            // Scroll to the bottom of the chat body
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }, 3000); // Delay of 3000 milliseconds (3 seconds)
+        } catch (error) {
+            chatBody.removeChild(typingIndicator);
+
+            const botMessage = document.createElement("div");
+            botMessage.classList.add("chat-message", "bot-message");
+            botMessage.textContent = "There was an error connecting to the server.";
+            chatBody.appendChild(botMessage);
+        }
+
+        chatBody.scrollTop = chatBody.scrollHeight;
     }
 }
+
+function startVoiceRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+        alert("Your browser does not support speech recognition.");
+        return;
+    }
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+
+    recognition.onstart = function() {
+        alert("Listening..."); // Notify the user that speech recognition has started
+    };
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        sendMessage(transcript);
+    };
+
+    recognition.onerror = function(event) {
+        alert("An error occurred during speech recognition: " + event.error);
+    };
+
+    recognition.start();
+}
+
 function goBack() {
     window.history.back();
 }

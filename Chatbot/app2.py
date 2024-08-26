@@ -103,35 +103,7 @@ def user_input(user_question):
     print(result_text)
 
 
-#     print(response['result'])
-# def user_input(user_question):
-#     embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
-#     new_db = FAISS.load_local('faiss_index', embeddings, allow_dangerous_deserialization=True)
-    
-#     # Get the retriever from the FAISS index
-#     retriever = new_db.as_retriever()
-#     chain = get_conversational_chain(retriever)
-    
-#     # Use the new RetrievalQA chain
-#     response = chain.invoke({"query": user_question})
-#     result_text = response['result']
-    
-#     # Convert the result into speech
-#     engine = pyttsx3.init()
-#     engine.say(result_text)
-#     engine.runAndWait()
-
-#     print(result_text)
-
-# Main function to execute the chatbot process
-# def main():
-#     user_question = 'tell me everything you know about land'
-#     user_input(user_question)
-#     #If needed, uncomment the following lines to process the PDF
-#     #raw_text = get_pdf_text()
-#     #text_chunks = get_text_chunks(raw_text)
-#     #get_vector_store(text_chunks)
-
+ 
 def main():
     user_question = get_audio_input()
     if user_question:
