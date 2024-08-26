@@ -13,6 +13,7 @@ body {
     padding: 4rem 4rem; /* Add padding for better spacing */
     text-align: center; /* Center text */
 }
+
 header {
     position: fixed;
     top: 0;
@@ -29,7 +30,7 @@ header {
 /* Navigation */
 .navbar-light .navbar-nav .nav-link {
     color: #333; /* Dark text */
-    transition: color 10s ease, transform 10s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -165,6 +166,32 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
 }
 
+/* Services Section */
+#services {
+    padding: 60px 0; /* Add padding to the top and bottom */
+}
+
+#services h2 {
+    color: #2d6a4f; /* Green for heading */
+    margin-bottom: 40px;
+}
+
+#services .card {
+    border: 1px solid #28a745; /* Green border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Pointer cursor for clickable cards */
+}
+
+#services .card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+#services .card-title {
+    color: #2d6a4f; /* Green for card titles */
+    transition: color 0.3s ease;
+}
+
 /* About Section */
 #about {
     background-color: #2d6a4f; /* Green background color */
@@ -195,26 +222,6 @@ a:hover {
     }
 }
 
-/* Dropdown Menu Animations */
-.dropdown-menu {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-}
-@media (max-width: 767.98px) {
-    .hero-section {
-        padding: 3rem 1rem;
-    }
-
-    .navbar-brand img {
-        height: 40px; /* Adjust logo size on smaller screens */
-    }
-}
 @media (max-width: 767.98px) {
     h2 {
         font-size: 1.5rem; /* Smaller font size on smaller screens */
@@ -228,6 +235,7 @@ a:hover {
         font-size: 0.875rem; /* Adjust card text font size */
     }
 }
+
 @media (max-width: 767.98px) {
     .navbar-nav {
         text-align: center;
@@ -242,14 +250,28 @@ a:hover {
         margin: 0.5rem;
     }
 }
+
 @media (max-width: 767.98px) {
     .card {
         margin-bottom: 1rem; /* Ensure space between stacked cards */
     }
 }
+
 @media (max-width: 767.98px) {
     .bg-dark-green {
         padding: 1rem;
         font-size: 0.875rem; /* Adjust footer text size */
     }
+}
+
+/* Dropdown Menu Animations */
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
 }
