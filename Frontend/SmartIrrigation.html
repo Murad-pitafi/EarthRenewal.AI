@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SmartIrrigation.css">
+    <title>Smart Irrigation Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Irrigation System</h1>
+        <form id="irrigation-form">
+            <label for="doy">Day of Year (DOY):</label>
+            <input type="number" id="doy" name="DOY" required>
+
+            <label for="precip">Precipitation (mm):</label>
+            <input type="number" id="precip" name="Precip\nmm" required>
+
+            <label for="irrig">Irrigation (mm):</label>
+            <input type="number" id="irrig" name="Irrig\nmm" required>
+
+            <label for="percent1">0 - 15%:</label>
+            <input type="number" id="percent1" name="0 - 15\n%" required>
+
+            <label for="percent2">15 - 45%:</label>
+            <input type="number" id="percent2" name="15 - 45\n%" required>
+
+            <label for="percent3">45 - 75%:</label>
+            <input type="number" id="percent3" name="45 - 75\n%" required>
+
+            <label for="percent4">75 - 105%:</label>
+            <input type="number" id="percent4" name="75 - 105\n%" required>
+
+            <label for="percent5">105 - 135%:</label>
+            <input type="number" id="percent5" name="105 - 135\n%" required>
+
+            <label for="percent6">135 - 165%:</label>
+            <input type="number" id="percent6" name="135 - 165\n%" required>
+
+            <label for="percent7">165 - 200%:</label>
+            <input type="number" id="percent7" name="165 - 200\n%" required>
+
+            <label for="growth">Growth Stage:</label>
+            <input type="number" id="growth" name="Growth\nStage" required>
+
+            <label for="rootDepth">Root Depth:</label>
+            <input type="number" id="rootDepth" name="Root\nDepth" required>
+
+            <label for="canopy">Canopy Cover:</label>
+            <input type="number" id="canopy" name="Canopy\nCover" required>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="Height\ncm" required>
+
+            <label for="nApplied">N Applied (kg/ha):</label>
+            <input type="number" id="nApplied" name="N Applied\nkg/ha" required>
+
+            <label for="etr">ETr (mm):</label>
+            <input type="number" id="etr" name="ETr\nmm" required>
+
+            <label for="kcb">Kcb:</label>
+            <input type="number" id="kcb" name="Kcb" required>
+
+            <label for="ks">Ks:</label>
+            <input type="number" id="ks" name="Ks" required>
+
+            <label for="etcb">ETcb (mm):</label>
+            <input type="number" id="etcb" name="ETcb\nmm" required>
+
+            <label for="evap">Evap (mm):</label>
+            <input type="number" id="evap" name="Evap\nmm" required>
+
+            <label for="deepPerc">Deep Percolation (mm):</label>
+            <input type="number" id="deepPerc" name="Deep Perc\nmm" required>
+
+            <label for="etc">ETc (mm):</label>
+            <input type="number" id="etc" name="ETc\nmm" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="SmartIrrigation.js"></script>
+</body>
+</html>
