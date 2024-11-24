@@ -2,9 +2,9 @@ streamlit==1.40.1
 joblib
 pandas
 numpy
-sklearn
+scikit-learn==1.2.2  # Replace sklearn with a compatible version
 xgboost
-setuptools>=65.5.1  # Ensure setuptools is updated to avoid distutils issues
+setuptools>=65.5.1
 scipy
 matplotlib
 plotly
