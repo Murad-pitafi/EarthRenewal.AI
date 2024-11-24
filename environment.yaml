@@ -1,0 +1,13 @@
+name: soil-monitoring-env  # You can name the environment as you like
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - streamlit
+  - joblib
+  - pytest
+  - flake8
+  - pip
+  - pip:
+      - scikit-learn  
