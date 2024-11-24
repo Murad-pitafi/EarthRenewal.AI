@@ -1,6 +1,18 @@
-google-generativeai
-python-dotenv
-langchain
+streamlit==1.40.1
+joblib
+pandas
+numpy
+scikit-learn # Replace sklearn with a compatible version
+xgboost
+setuptools>=65.5.1
+scipy
+matplotlib
+plotly
+flask
+gunicorn
 PyPDF2
+langchain
+langchain-google-genai
 faiss-cpu
-langchain_google_genai
+python-dotenv
+google-generativeai
