@@ -64,8 +64,13 @@ def soil_prediction_page():
             st.write("Predicted Soil Health: **Good Soil Health**")
 
 # --- Load the pre-trained model ---
+# import joblib
+# import os
+
 def load_model():
-    model = joblib.load("D:/EarthRenewal.AI/Model/Soil Monitoring/model.pkl")  # Adjust path if necessary
+    # Use a relative path to ensure portability in deployment
+    model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+    model = joblib.load(model_path)
     return model
 
 # --- Function to make prediction ---
