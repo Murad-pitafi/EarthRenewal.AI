@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda env update --file=environment.yml --name base
-        conda activate base  # If you're using a specific environment
+        # conda activate base  # If you're using a specific environment
 
     - name: Lint with flake8
       run: |
