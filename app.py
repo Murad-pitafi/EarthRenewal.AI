@@ -5,7 +5,7 @@ import joblib
 def home_page():
     st.title("Welcome to the Multi-Page App!")
     st.write("This is the home page where we introduce the app and its functionality.")
-    st.image("D:/EarthRenewal.AI/Frontend/logo.png", width=200)  # Example image on the homepage
+    # st.image("D:/EarthRenewal.AI/Frontend/logo.png", width=200)  # Example image on the homepage
     st.write("Navigate to other sections using the navigation bar above.")
 
 # --- Function for Chatbot Page ---
@@ -30,7 +30,7 @@ def chatbot_page():
         except Exception as e:
             st.write(f"An error occurred while contacting the chatbot API: {e}")
 
-            
+
 # --- Function for Soil Prediction Page ---
 def soil_prediction_page():
     st.title("Soil Monitoring and Prediction")
