@@ -16,3 +16,4 @@ langchain-google-genai
 faiss-cpu
 python-dotenv
 google-generativeai
+os
