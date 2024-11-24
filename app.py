@@ -1,69 +1,117 @@
-from PyPDF2 import PdfReader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-import os 
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-import google.generativeai as genai
-from langchain_community.vectorstores import FAISS
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.chains.question_answering import load_qa_chain 
-from langchain.prompts import PromptTemplate
-from dotenv import load_dotenv
+import streamlit as st
+import joblib
 
-load_dotenv()
+# --- Function for Home Page ---
+def home_page():
+    st.title("Welcome to the Multi-Page App!")
+    st.write("This is the home page where we introduce the app and its functionality.")
+    st.image("D:/EarthRenewal.AI/Frontend/logo.png", width=200)  # Example image on the homepage
+    st.write("Navigate to other sections using the navigation bar above.")
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-def get_pdf_text():
-    text=""
-    pdf_reader = PdfReader(r"C:\Users\Nizam\Desktop\Earthrenewal chatbot\Restoration_of_Degraded_Agricultural_Lan (1).pdf")
-    for page in pdf_reader.pages:
-        text+=page.extract_text()
-        return text 
+# --- Function for Chatbot Page ---
+def chatbot_page():
+    st.title("Chatbot Section")
+    st.write("Chat with our AI-powered chatbot here.")
     
-def get_text_chunks(text):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
-    chunks = text_splitter.split_text(text)
-    return chunks 
-
-def get_vector_store(text_chunks):
-    embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
-    vector_store = FAISS.from_texts(text_chunks,embedding=embeddings)
-    vector_store.save_local("faiss_index")
+    user_input = st.text_input("Ask me anything:")
     
-def get_conversational_chain():
-    prompt_template ="""Answer the questions as detailed as possible from the provided context
-    context:\n{context}?\n
-    Question:\n{question}\n
-    Answer: 
-    """
-    model =ChatGoogleGenerativeAI(model='gemini-pro',temperature=0.3)
-    prompt = PromptTemplate(template=prompt_template,input_variables=['context','questions'])
-    chain = load_qa_chain(model,chain_type='stuff',prompt=prompt)
-    return chain 
-
-
-def user_input(user_question):
-    embeddings = GoogleGenerativeAIEmbeddings(model='models/embedding-001')
-    #new_db = FAISS.load_local('faiss_index',embeddings)
-    new_db = FAISS.load_local('faiss_index', embeddings, allow_dangerous_deserialization=True)
-
-    docs = new_db.similarity_search(user_question)
-    chain = get_conversational_chain()
-    #response = chain({'input_documents':docs,'question':user_question})
-    response = chain.invoke({'input_documents': docs, 'question': user_question})
-
-    print(response['output_text'])
-
-def main():
-    user_question='tell me everything you know about land'
-    user_input(user_question)
-    #raw_text = get_pdf_text()
-    #text_chunks = get_text_chunks(raw_text)
-    #get_vector_store(text_chunks)
+    if user_input:
+        st.write(f"You asked: {user_input}")
+        st.write("Chatbot is processing your request...")
         
+        # Call the Flask API to get the chatbot's response
+        try:
+            response = requests.post("http://127.0.0.1:5000/api/ask", json={"question": user_input})
+            if response.status_code == 200:
+                result = response.json().get('answer')
+                st.write(f"Chatbot response: {result}")
+            else:
+                st.write("Error: Unable to get response from the chatbot API.")
+        except Exception as e:
+            st.write(f"An error occurred while contacting the chatbot API: {e}")
+
+            
+# --- Function for Soil Prediction Page ---
+def soil_prediction_page():
+    st.title("Soil Monitoring and Prediction")
+    st.write("This section helps predict soil conditions using AI models.")
     
-if __name__ =="__main__":
+    # User input for soil monitoring features
+    air_temperature = st.number_input("Air Temperature (°C)", min_value=-50.0, max_value=50.0, value=28.9)
+    soil_temperature = st.number_input("Soil Temperature (°C)", min_value=-50.0, max_value=50.0, value=26.81)
+    humidity = st.number_input("Humidity (%)", min_value=0.0, max_value=100.0, value=42.0)
+    moisture = st.number_input("Moisture (%)", min_value=0.0, max_value=100.0, value=60.74)
+    nitrogen = st.number_input("Nitrogen (ppm)", min_value=0.0, value=4.97)
+    phosphorous = st.number_input("Phosphorous (ppm)", min_value=0.0, value=32.24)
+    potassium = st.number_input("Potassium (ppm)", min_value=0.0, value=24.44)
+    
+    # Bundle input data into a list for prediction
+    input_data = [air_temperature, soil_temperature, humidity, moisture, nitrogen, phosphorous, potassium]
+
+    # Load the model
+    model = load_model()
+
+    # Make prediction when the user clicks the button
+    if st.button("Predict Soil Health"):
+        prediction = make_prediction(model, input_data)
+        
+        # Display prediction result
+        if prediction == 0:
+            st.write("Predicted Soil Health: **Poor Soil Health**")
+        elif prediction == 1:
+            st.write("Predicted Soil Health: **Moderate Soil Health**")
+        else:
+            st.write("Predicted Soil Health: **Good Soil Health**")
+
+# --- Load the pre-trained model ---
+def load_model():
+    model = joblib.load("D:/EarthRenewal.AI/Model/Soil Monitoring/model.pkl")  # Adjust path if necessary
+    return model
+
+# --- Function to make prediction ---
+def make_prediction(model, input_data):
+    prediction = model.predict([input_data])
+    return prediction
+
+# --- Function to Create a Custom Navigation Bar ---
+def navbar():
+    st.markdown("""
+    <style>
+        .navbar {
+            background-color: #2d6a4f;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+            margin: 0 10px;
+        }
+        .navbar a:hover {
+            background-color: #1b5e20;
+        }
+    </style>
+    <div class="navbar">
+        <a href="javascript:void(0);" onclick="window.location.href='/Home'">Home</a>
+        <a href="javascript:void(0);" onclick="window.location.href='/Chatbot'">Chatbot</a>
+        <a href="javascript:void(0);" onclick="window.location.href='/SoilPrediction'">Soil Prediction</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# --- Main Function to Handle Navigation ---
+def main():
+    navbar()  # Display the navbar at the top
+    page = st.selectbox("Select a Page", ["Home", "Chatbot", "Soil Prediction"])
+
+    if page == "Home":
+        home_page()
+    elif page == "Chatbot":
+        chatbot_page()
+    elif page == "Soil Prediction":
+        soil_prediction_page()
+
+# --- Run the Streamlit app ---
+if __name__ == "__main__":
     main()
-    
-    
-    
-    
