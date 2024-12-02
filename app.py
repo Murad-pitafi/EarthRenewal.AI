@@ -1,11 +1,13 @@
 import streamlit as st
 import joblib
 import os
+import requests
+
 # --- Function for Home Page ---
 def home_page():
-    st.title("Welcome to the Multi-Page App!")
-    st.write("This is the home page where we introduce the app and its functionality.")
-    # st.image("D:/EarthRenewal.AI/Frontend/logo.png", width=200)  # Example image on the homepage
+    st.title("Welcome to EarthRenewal.AI")
+    st.write("About Us")
+    #st.image("Frontend/logo.png", width=200)  # Example image on the homepage
     st.write("Navigate to other sections using the navigation bar above.")
 
 # --- Function for Chatbot Page ---
@@ -29,7 +31,6 @@ def chatbot_page():
                 st.write("Error: Unable to get response from the chatbot API.")
         except Exception as e:
             st.write(f"An error occurred while contacting the chatbot API: {e}")
-
 
 # --- Function for Soil Prediction Page ---
 def soil_prediction_page():
@@ -64,9 +65,6 @@ def soil_prediction_page():
             st.write("Predicted Soil Health: **Good Soil Health**")
 
 # --- Load the pre-trained model ---
-# import joblib
-# import os
-
 def load_model():
     # Use a relative path to ensure portability in deployment
     model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
@@ -78,30 +76,52 @@ def make_prediction(model, input_data):
     prediction = model.predict([input_data])
     return prediction
 
-# --- Function to Create a Custom Navigation Bar ---
+# --- Function to Create a Custom Header and Navigation Bar ---
 def navbar():
     st.markdown("""
     <style>
-        .navbar {
+        body {
+            background-color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #2d6a4f;
             padding: 10px;
-            text-align: center;
-        }
-        .navbar a {
             color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-size: 17px;
-            margin: 0 10px;
         }
-        .navbar a:hover {
-            background-color: #1b5e20;
+        .header img {
+            height: 50px;
+        }
+        .header .project-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .header .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .header .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .header .nav-links a:hover {
+            text-decoration: underline;
         }
     </style>
-    <div class="navbar">
-        <a href="javascript:void(0);" onclick="window.location.href='/Home'">Home</a>
-        <a href="javascript:void(0);" onclick="window.location.href='/Chatbot'">Chatbot</a>
-        <a href="javascript:void(0);" onclick="window.location.href='/SoilPrediction'">Soil Prediction</a>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <img src="Frontend/logo.png" alt="Logo">
+            <span class="project-name">EarthRenewal.AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="javascript:void(0);" onclick="window.location.href='/Chatbot'">Chatbot</a>
+            <a href="javascript:void(0);" onclick="window.location.href='/SoilPrediction'">Soil Monitoring</a>
+            <a href="javascript:void(0);" onclick="window.location.href='/ContactUs'">Contact Us</a>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
