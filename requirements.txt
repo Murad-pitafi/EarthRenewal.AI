@@ -1,4 +1,4 @@
-streamlit==1.40.1
+streamlit
 joblib
 pandas
 numpy
@@ -16,4 +16,7 @@ langchain-google-genai
 faiss-cpu
 python-dotenv
 google-generativeai
+sounddevice 
+whisper 
+gTTS==2.2.4 
 
